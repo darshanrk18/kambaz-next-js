@@ -295,24 +295,20 @@ export default function Lab1() {
           <select id="wd-select-one-genre" defaultValue="SCIFI">
             <option value="COMEDY">Comedy</option>
             <option value="DRAMA">Drama</option>
-            <option value="SCIFI">
-              Science Fiction
-            </option>
+            <option value="SCIFI">Science Fiction</option>
             <option value="FANTASY">Fantasy</option>
           </select>
           <h5>Select many</h5>
           <label htmlFor="wd-select-many-genre"> Favorite movie genres: </label>
           <br />
-          <select multiple id="wd-select-many-genre" defaultValue={["COMEDY", "SCIFI"]}>
-            <option value="COMEDY">
-              {" "}
-              Comedy{" "}
-            </option>
+          <select
+            multiple
+            id="wd-select-many-genre"
+            defaultValue={["COMEDY", "SCIFI"]}
+          >
+            <option value="COMEDY"> Comedy </option>
             <option value="DRAMA"> Drama </option>
-            <option value="SCIFI">
-              {" "}
-              Science Fiction{" "}
-            </option>
+            <option value="SCIFI"> Science Fiction </option>
             <option value="FANTASY"> Fantasy </option>
           </select>
           <h4>Other HTML field types</h4>
@@ -348,16 +344,16 @@ export default function Lab1() {
           />
           <br />
           <h4>Anchor tag</h4>
-          Please 
+          Please
           <a href="https://www.lipsum.com" id="wd-lipsum">
             click here
           </a>
-           to get dummy text
+          to get dummy text
           <br />
           <h4>Github Link</h4>
           Please
           <a
-            href="https://github.com/nishamurthy-22/kambaz-next-js.git"
+            href="https://github.com/darshanrk18/kambaz-next-js.git"
             id=" wd-github"
           >
             click here
