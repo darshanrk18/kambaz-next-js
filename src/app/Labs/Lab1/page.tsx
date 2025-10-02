@@ -344,19 +344,20 @@ export default function Lab1() {
           />
           <br />
           <h4>Anchor tag</h4>
-          Please
-          <a href="https://www.lipsum.com" id="wd-lipsum">
-            click here
+          Please{" "}
+          <a href="https://www.lipsum.com" id="wd-lipsum" target="_blank">
+            click here{" "}
           </a>
           to get dummy text
           <br />
           <h4>Github Link</h4>
-          Please
+          Please{" "}
           <a
             href="https://github.com/darshanrk18/kambaz-next-js.git"
             id=" wd-github"
+            target="_blank"
           >
-            click here
+            click here{" "}
           </a>
           to go to my repository
           <br />
