@@ -1,12 +1,37 @@
 "use client";
+import Link from "next/link";
 
 export default function Lab1() {
   return (
     <div id="wd-lab1">
+      <h1>Darshan Ravindra Konnur - Section 05</h1>
+
+      <h2>Navigation</h2>
+      <ul>
+        <li>
+          <Link href="/Labs/Lab1">Lab 1: HTML Examples</Link>
+        </li>
+        <li>
+          <Link href="/Labs/Lab2">Lab 2: CSS Basics</Link>
+        </li>
+        <li>
+          <Link href="/Labs/Lab3">Lab 3: JavaScript Fundamentals</Link>
+        </li>
+        <li>
+          <Link href="/Account/Signin">Kambaz</Link>
+        </li>
+        <li>
+          <a
+            href="https://github.com/darshanrk18/kambaz-next-js.git"
+            target="_blank"
+          >
+            Source Code Repository - GitHub
+          </a>
+        </li>
+      </ul>
+
       <h2>Lab 1</h2>
-
       <h3>HTML Examples</h3>
-
       <div id="wd-h-tag">
         <h4>Heading Tags</h4>
         Text documents are often broken up into several sections and
@@ -21,7 +46,6 @@ export default function Lab1() {
         h3, h4, h5, and h6. Tag h1 is the largest heading and h6 is the smallest
         heading.
       </div>
-
       <div id="wd-p-tag">
         <h4>Paragraph Tag</h4>
         <p id="wd-p-1">
@@ -31,25 +55,21 @@ export default function Lab1() {
           sentences. To force the browser to add vertical spacing, wrap the
           paragraphs you want to separate with the paragraph tag
         </p>
-
         <p id="wd-p-2">
           This is the first paragraph. The paragraph tag is used to format
           vertical gaps between long pieces of text like this one.
         </p>
-
         <p id="wd-p-3">
           This is the second paragraph. Even though there is a deliberate white
           gap between the paragraph above and this paragraph, by default
           browsers render them as one contiguous piece of text as shown here on
           the right.
         </p>
-
         <p id="wd-p-4">
           This is the third paragraph. Wrap each paragraph with the paragraph
           tag to tell browsers to render the gaps.
         </p>
       </div>
-
       <div id="wd-lists">
         <h4>List Tags</h4>
         <h5>Ordered List Tag</h5>
@@ -64,47 +84,15 @@ export default function Lab1() {
           <li>Flip and cook the other side.</li>
           <li>Serve and enjoy!</li>
         </ol>
-        After pancakes, lets learn how to make my favorite recipe, which is
-        butter chicken:
-        <ol id="wd-my-favorite-recipe">
-          <li>
-            In a large bowl, combine 1 cup yogurt, 1 tbsp lemon juice, 1 tbsp
-            ginger-garlic paste, 1 tsp garam masala, 1 tsp chili powder, ½ tsp
-            turmeric, and salt to taste.
-          </li>
-          <li>
-            Add 1 lb bite-sized chicken pieces, toss well, and marinate in the
-            refrigerator for at least 1 hour (or up to overnight).
-          </li>
-          <li>
-            Heat 1 tbsp oil and 1 tbsp butter in a large skillet over medium
-            heat.
-          </li>
-          <li>
-            Sauté 1 finely chopped onion until soft and golden, then stir in 1
-            tbsp ginger-garlic paste; cook 1-2 minutes until fragrant.
-          </li>
-          <li>
-            Add 1 cup tomato puree, 1 tsp chili powder, 1 tsp cumin powder, and
-            1 tsp coriander powder; cook, stirring occasionally, until oil
-            separates from the masala.
-          </li>
-          <li>
-            Reduce heat; stir in ½ cup heavy cream and remaining 1 tbsp butter,
-            then simmer gently until the sauce thickens slightly.
-          </li>
-          <li>
-            Add the marinated chicken, stir to coat, and cook 10-15 minutes
-            (until chicken is cooked through), turning pieces in the sauce.
-          </li>
-          <li>
-            Sprinkle 1 tsp crushed kasuri methi (dried fenugreek leaves) over
-            the curry, simmer 2 minutes to incorporate flavor.
-          </li>
-          <li>
-            Garnish with chopped cilantro, serve hot with naan or basmati rice,
-            and enjoy!
-          </li>
+        My favorite recipe:
+        <ol id="wd-your-favorite-recipe">
+          <li>Heat oil in a pan.</li>
+          <li>Add mustard seeds and let them splutter.</li>
+          <li>Add chopped potatoes.</li>
+          <li>Add turmeric, salt and red chilli powder.</li>
+          <li>Mix well.</li>
+          <li>Cover and cook till the potatoes are soft.</li>
+          <li>Garnish with coriander leaves.</li>
         </ol>
         <h5>Unordered List Tag</h5>
         My favorite books (in no particular order)
@@ -117,12 +105,12 @@ export default function Lab1() {
         </ul>
         Your favorite books (in no particular order)
         <ul id="wd-your-books">
-          <li>Harry Potter</li>
-          <li>Star wars</li>
-          <li>The hobbit</li>
+          <li>The Shoe Dog</li>
+          <li>Crazy Rich Asians</li>
+          <li>The Girl on the Train</li>
+          <li>Traitors Gate</li>
         </ul>
       </div>
-
       <div id="wd-tables">
         <h4>Table Tag</h4>
         <table border={1} width="100%">
@@ -135,76 +123,75 @@ export default function Lab1() {
             </tr>
           </thead>
           <tbody>
-            <tr style={{ textAlign: "center" }}>
+            <tr>
               <td>Q1</td>
               <td>HTML</td>
               <td>2/3/21</td>
               <td>85</td>
             </tr>
-            <tr style={{ textAlign: "center" }}>
+            <tr>
               <td>Q2</td>
               <td>CSS</td>
               <td>2/10/21</td>
               <td>90</td>
             </tr>
-            <tr style={{ textAlign: "center" }}>
+            <tr>
               <td>Q3</td>
               <td>JavaScript</td>
               <td>2/17/21</td>
               <td>95</td>
             </tr>
-            <tr style={{ textAlign: "center" }}>
+            <tr>
               <td>Q4</td>
               <td>React</td>
-              <td>2/24/21</td>
-              <td>92</td>
+              <td>2/25/21</td>
+              <td>97</td>
             </tr>
-            <tr style={{ textAlign: "center" }}>
+            <tr>
               <td>Q5</td>
-              <td>Node.js</td>
-              <td>3/3/21</td>
-              <td>88</td>
-            </tr>
-            <tr style={{ textAlign: "center" }}>
-              <td>Q6</td>
-              <td>Databases</td>
+              <td>Restful Web API</td>
               <td>3/10/21</td>
-              <td>90</td>
+              <td>82</td>
             </tr>
-            <tr style={{ textAlign: "center" }}>
-              <td>Q7</td>
-              <td>APIs</td>
-              <td>3/17/21</td>
-              <td>89</td>
-            </tr>
-            <tr style={{ textAlign: "center" }}>
-              <td>Q8</td>
-              <td>Deployment</td>
+            <tr>
+              <td>Q6</td>
+              <td>MongoDB</td>
               <td>3/24/21</td>
-              <td>91</td>
+              <td>86</td>
             </tr>
-            <tr style={{ textAlign: "center" }}>
-              <td>Q9</td>
-              <td>Security</td>
-              <td>3/31/21</td>
-              <td>87</td>
-            </tr>
-            <tr style={{ textAlign: "center" }}>
-              <td>Q10</td>
-              <td>Performance</td>
+            <tr>
+              <td>Q7</td>
+              <td>Maintaining State</td>
               <td>4/7/21</td>
+              <td>99</td>
+            </tr>
+            <tr>
+              <td>Q8</td>
+              <td>Next.js</td>
+              <td>4/17/21</td>
+              <td>83</td>
+            </tr>
+            <tr>
+              <td>Q9</td>
+              <td>Routing</td>
+              <td>4/27/21</td>
+              <td>85</td>
+            </tr>
+            <tr>
+              <td>Q10</td>
+              <td>Dynamic Styling</td>
+              <td>5/12/21</td>
               <td>93</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td colSpan={3}>Average</td>
-              <td align="center">90</td>
+              <td>90</td>
             </tr>
           </tfoot>
         </table>
       </div>
-
       <div id="wd-images">
         <h4>Image tag</h4>
         Loading an image from the internet: <br />
@@ -218,7 +205,6 @@ export default function Lab1() {
         <br />
         <img id="wd-teslabot" src="/images/teslabot.jpg" height="200px" />
       </div>
-
       <div id="wd-forms">
         <h4>Form Elements</h4>
         <form id="wd-text-fields">
@@ -228,7 +214,7 @@ export default function Lab1() {
           <label htmlFor="wd-text-fields-password">Password:</label>
           <input
             type="password"
-            defaultValue="123@#$asd"
+            value="123@#$asd"
             id="wd-text-fields-password"
           />
           <br />
@@ -239,79 +225,63 @@ export default function Lab1() {
           <input
             type="text"
             placeholder="Doe"
-            defaultValue="Wonderland"
+            value="Wonderland"
             title="The last name"
             id="wd-text-fields-last-name"
           />
+          {/* copy rest of form elements here  */}
           <h5>Text boxes</h5>
           <label>Biography:</label>
           <br />
-          <textarea
-            id="wd-textarea"
-            cols={30}
-            rows={10}
-            defaultValue={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`}
-          />
-          <h5 id="wd-buttons">Buttons</h5>
-          <button
-            type="button"
-            onClick={() => alert("Life is Good!")}
-            id="wd-all-good"
-          >
-            Hello World!
-          </button>
-          <h5 id="wd-radio-buttons">Radio buttons</h5>
-          <label>Favorite movie genre:</label>
-          <br />
-          <input type="radio" name="radio-genre" id="wd-radio-comedy" />
-          <label htmlFor="wd-radio-comedy">Comedy</label>
-          <br />
-          <input type="radio" name="radio-genre" id="wd-radio-drama" />
-          <label htmlFor="wd-radio-drama">Drama</label>
-          <br />
-          <input type="radio" name="radio-genre" id="wd-radio-scifi" />
-          <label htmlFor="wd-radio-scifi">Science Fiction</label>
-          <br />
-          <input type="radio" name="radio-genre" id="wd-radio-fantasy" />
-          <label htmlFor="wd-radio-fantasy">Fantasy</label>
-          <h5 id="wd-checkboxes">Checkboxes</h5>
-          <label>Favorite movie genre:</label>
-          <br />
-          <input type="checkbox" name="check-genre" id="wd-chkbox-comedy" />
-          <label htmlFor="wd-chkbox-comedy">Comedy</label>
-          <br />
-          <input type="checkbox" name="check-genre" id="wd-chkbox-drama" />
-          <label htmlFor="wd-chkbox-drama">Drama</label>
-          <br />
-          <input type="checkbox" name="check-genre" id="wd-chkbox-scifi" />
-          <label htmlFor="wd-chkbox-scifi">Science Fiction</label>
-          <br />
-          <input type="checkbox" name="check-genre" id="wd-chkbox-fantasy" />
-          <label htmlFor="wd-chkbox-fantasy">Fantasy</label>
-          <h4 id="wd-dropdowns">Dropdowns</h4>
-          <h5>Select one</h5>
-          <label htmlFor="wd-select-one-genre"> Favorite movie genre: </label>
-          <br />
-          <select id="wd-select-one-genre" defaultValue="SCIFI">
-            <option value="COMEDY">Comedy</option>
-            <option value="DRAMA">Drama</option>
-            <option value="SCIFI">Science Fiction</option>
-            <option value="FANTASY">Fantasy</option>
-          </select>
-          <h5>Select many</h5>
-          <label htmlFor="wd-select-many-genre"> Favorite movie genres: </label>
-          <br />
-          <select
-            multiple
-            id="wd-select-many-genre"
-            defaultValue={["COMEDY", "SCIFI"]}
-          >
-            <option value="COMEDY"> Comedy </option>
-            <option value="DRAMA"> Drama </option>
-            <option value="SCIFI"> Science Fiction </option>
-            <option value="FANTASY"> Fantasy </option>
-          </select>
+          <textarea id="wd-textarea" cols={30} rows={10}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </textarea>
+        </form>
+        <h5 id="wd-buttons">Buttons</h5>
+        <button
+          type="button"
+          onClick={() => alert("Life is Good!")}
+          id="wd-all-good"
+        >
+          Hello World!
+        </button>
+        <h5 id="wd-radio-buttons">Radio buttons</h5>
+        <label>Favorite movie genre:</label>
+        <br />
+        <input type="radio" name="radio-genre" id="wd-radio-comedy" />
+        <label htmlFor="wd-radio-comedy">Comedy</label>
+        <br />
+        <input type="radio" name="radio-genre" id="wd-radio-drama" />
+        <label htmlFor="wd-radio-drama">Drama</label>
+        <br />
+        <input type="radio" name="radio-genre" id="wd-radio-scifi" />
+        <label htmlFor="wd-radio-scifi">Science Fiction</label>
+        <br />
+        <input type="radio" name="radio-genre" id="wd-radio-fantasy" />
+        <label htmlFor="wd-radio-fantasy">Fantasy</label>
+        <h5 id="wd-checkboxes">Checkboxes</h5>
+        <label>Favorite movie genre:</label>
+        <br />
+        <input type="checkbox" name="check-genre" id="wd-chkbox-comedy" />
+        <label htmlFor="wd-chkbox-comedy">Comedy</label>
+        <br />
+        <input type="checkbox" name="check-genre" id="wd-chkbox-drama" />
+        <label htmlFor="wd-chkbox-drama">Drama</label>
+        <br />
+        <input type="checkbox" name="check-genre" id="wd-chkbox-scifi" />
+        <label htmlFor="wd-chkbox-scifi">Science Fiction</label>
+        <br />
+        <input type="checkbox" name="check-genre" id="wd-chkbox-fantasy" />
+        <label htmlFor="wd-chkbox-fantasy">Fantasy</label>
+        <form>
           <h4>Other HTML field types</h4>
+
           <label htmlFor="wd-text-fields-email"> Email: </label>
           <input
             type="email"
@@ -319,49 +289,72 @@ export default function Lab1() {
             id="wd-text-fields-email"
           />
           <br />
+
           <label htmlFor="wd-text-fields-salary-start"> Starting salary:</label>
           <input
             type="number"
-            defaultValue="100000"
+            value="100000"
             placeholder="1000"
             id="wd-text-fields-salary-start"
           />
           <br />
+
           <label htmlFor="wd-text-fields-rating"> Rating: </label>
           <input
             type="range"
-            defaultValue="4"
+            value="4"
             max="5"
             placeholder="Doe"
             id="wd-text-fields-rating"
           />
           <br />
+
           <label htmlFor="wd-text-fields-dob"> Date of birth: </label>
-          <input
-            type="date"
-            defaultValue="1999-08-09"
-            id="wd-text-fields-dob"
-          />
-          <br />
-          <h4>Anchor tag</h4>
-          Please{" "}
-          <a href="https://www.lipsum.com" id="wd-lipsum" target="_blank">
-            click here{" "}
-          </a>
-          to get dummy text
-          <br />
-          <h4>Github Link</h4>
-          Please{" "}
-          <a
-            href="https://github.com/darshanrk18/kambaz-next-js.git"
-            id=" wd-github"
-            target="_blank"
-          >
-            click here{" "}
-          </a>
-          to go to my repository
+          <input type="date" value="2000-01-21" id="wd-text-fields-dob" />
           <br />
         </form>
+        <h4 id="wd-dropdowns">Dropdowns</h4>
+        <h5>Select one</h5>
+        <label htmlFor="wd-select-one-genre"> Favorite movie genre: </label>
+        <br />
+        <select id="wd-select-one-genre">
+          <option value="COMEDY">Comedy</option>
+          <option value="DRAMA">Drama</option>
+          <option selected value="SCIFI">
+            Science Fiction
+          </option>
+          <option value="FANTASY">Fantasy</option>
+        </select>
+        <h5>Select many</h5>
+        <label htmlFor="wd-select-many-genre"> Favorite movie genres: </label>
+        <br />
+        <select multiple id="wd-select-many-genre">
+          <option value="COMEDY" selected>
+            {" "}
+            Comedy{" "}
+          </option>
+          <option value="DRAMA"> Drama </option>
+          <option value="SCIFI" selected>
+            {" "}
+            Science Fiction{" "}
+          </option>
+          <option value="FANTASY"> Fantasy </option>
+        </select>
+        <h4>Anchor tag</h4>
+        Please{" "}
+        <a href="https://www.lipsum.com" id="wd-lipsum">
+          click here
+        </a>{" "}
+        to get dummy text
+        <br />
+        This is my{" "}
+        <a
+          href="https://github.com/darshanrk18/kambaz-next-js.git"
+          id="wd-lab2-link"
+        >
+          repository
+        </a>{" "}
+        link
       </div>
     </div>
   );
