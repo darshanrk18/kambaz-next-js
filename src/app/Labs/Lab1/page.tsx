@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Lab1() {
   return (
@@ -195,15 +196,25 @@ export default function Lab1() {
       <div id="wd-images">
         <h4>Image tag</h4>
         Loading an image from the internet: <br />
-        <img
+        <Image
           id="wd-starship"
-          width="400px"
+          width={400}
+          height={300}
           src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"
+          alt="Starship spacecraft"
+          style={{ width: "400px", height: "auto" }}
         />
         <br />
         Loading a local image:
         <br />
-        <img id="wd-teslabot" src="/images/teslabot.jpg" height="200px" />
+        <Image 
+          id="wd-teslabot" 
+          src="/images/teslabot.jpg" 
+          width={300}
+          height={200}
+          alt="Tesla Bot"
+          style={{ height: "200px", width: "auto" }}
+        />
       </div>
       <div id="wd-forms">
         <h4>Form Elements</h4>
@@ -214,7 +225,7 @@ export default function Lab1() {
           <label htmlFor="wd-text-fields-password">Password:</label>
           <input
             type="password"
-            value="123@#$asd"
+            defaultValue="123@#$asd"
             id="wd-text-fields-password"
           />
           <br />
@@ -225,23 +236,20 @@ export default function Lab1() {
           <input
             type="text"
             placeholder="Doe"
-            value="Wonderland"
+            defaultValue="Wonderland"
             title="The last name"
             id="wd-text-fields-last-name"
           />
           {/* copy rest of form elements here  */}
           <h5>Text boxes</h5>
-          <label>Biography:</label>
+          <label htmlFor="wd-textarea">Biography:</label>
           <br />
-          <textarea id="wd-textarea" cols={30} rows={10}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </textarea>
+          <textarea 
+            id="wd-textarea" 
+            cols={30} 
+            rows={10}
+            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          />
         </form>
         <h5 id="wd-buttons">Buttons</h5>
         <button
@@ -252,7 +260,7 @@ export default function Lab1() {
           Hello World!
         </button>
         <h5 id="wd-radio-buttons">Radio buttons</h5>
-        <label>Favorite movie genre:</label>
+        <label htmlFor="wd-radio-comedy">Favorite movie genre:</label>
         <br />
         <input type="radio" name="radio-genre" id="wd-radio-comedy" />
         <label htmlFor="wd-radio-comedy">Comedy</label>
@@ -266,7 +274,7 @@ export default function Lab1() {
         <input type="radio" name="radio-genre" id="wd-radio-fantasy" />
         <label htmlFor="wd-radio-fantasy">Fantasy</label>
         <h5 id="wd-checkboxes">Checkboxes</h5>
-        <label>Favorite movie genre:</label>
+        <label htmlFor="wd-chkbox-comedy">Favorite movie genre:</label>
         <br />
         <input type="checkbox" name="check-genre" id="wd-chkbox-comedy" />
         <label htmlFor="wd-chkbox-comedy">Comedy</label>
@@ -293,7 +301,7 @@ export default function Lab1() {
           <label htmlFor="wd-text-fields-salary-start"> Starting salary:</label>
           <input
             type="number"
-            value="100000"
+            defaultValue="100000"
             placeholder="1000"
             id="wd-text-fields-salary-start"
           />
@@ -302,7 +310,7 @@ export default function Lab1() {
           <label htmlFor="wd-text-fields-rating"> Rating: </label>
           <input
             type="range"
-            value="4"
+            defaultValue="4"
             max="5"
             placeholder="Doe"
             id="wd-text-fields-rating"
@@ -310,17 +318,17 @@ export default function Lab1() {
           <br />
 
           <label htmlFor="wd-text-fields-dob"> Date of birth: </label>
-          <input type="date" value="2000-01-21" id="wd-text-fields-dob" />
+          <input type="date" defaultValue="2000-01-21" id="wd-text-fields-dob" />
           <br />
         </form>
         <h4 id="wd-dropdowns">Dropdowns</h4>
         <h5>Select one</h5>
         <label htmlFor="wd-select-one-genre"> Favorite movie genre: </label>
         <br />
-        <select id="wd-select-one-genre">
+        <select id="wd-select-one-genre" defaultValue="SCIFI">
           <option value="COMEDY">Comedy</option>
           <option value="DRAMA">Drama</option>
-          <option selected value="SCIFI">
+          <option value="SCIFI">
             Science Fiction
           </option>
           <option value="FANTASY">Fantasy</option>
@@ -328,13 +336,13 @@ export default function Lab1() {
         <h5>Select many</h5>
         <label htmlFor="wd-select-many-genre"> Favorite movie genres: </label>
         <br />
-        <select multiple id="wd-select-many-genre">
-          <option value="COMEDY" selected>
+        <select multiple id="wd-select-many-genre" defaultValue={["COMEDY", "SCIFI"]}>
+          <option value="COMEDY">
             {" "}
             Comedy{" "}
           </option>
           <option value="DRAMA"> Drama </option>
-          <option value="SCIFI" selected>
+          <option value="SCIFI">
             {" "}
             Science Fiction{" "}
           </option>
