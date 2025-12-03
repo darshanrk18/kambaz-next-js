@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Lab1() {
   return (
@@ -196,25 +195,15 @@ export default function Lab1() {
       <div id="wd-images">
         <h4>Image tag</h4>
         Loading an image from the internet: <br />
-        <Image
+        <img
           id="wd-starship"
-          width={400}
-          height={300}
+          width="400px"
           src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"
-          alt="Starship spacecraft"
-          style={{ width: "400px", height: "auto" }}
         />
         <br />
         Loading a local image:
         <br />
-        <Image 
-          id="wd-teslabot" 
-          src="/images/teslabot.jpg" 
-          width={300}
-          height={200}
-          alt="Tesla Bot"
-          style={{ height: "200px", width: "auto" }}
-        />
+        <img id="wd-teslabot" src="/images/teslabot.jpg" height="200px" />
       </div>
       <div id="wd-forms">
         <h4>Form Elements</h4>
@@ -242,7 +231,7 @@ export default function Lab1() {
           />
           {/* copy rest of form elements here  */}
           <h5>Text boxes</h5>
-          <label htmlFor="wd-textarea">Biography:</label>
+          <label>Biography:</label>
           <br />
           <textarea 
             id="wd-textarea" 
@@ -260,7 +249,7 @@ export default function Lab1() {
           Hello World!
         </button>
         <h5 id="wd-radio-buttons">Radio buttons</h5>
-        <label htmlFor="wd-radio-comedy">Favorite movie genre:</label>
+        <label>Favorite movie genre:</label>
         <br />
         <input type="radio" name="radio-genre" id="wd-radio-comedy" />
         <label htmlFor="wd-radio-comedy">Comedy</label>
@@ -274,7 +263,7 @@ export default function Lab1() {
         <input type="radio" name="radio-genre" id="wd-radio-fantasy" />
         <label htmlFor="wd-radio-fantasy">Fantasy</label>
         <h5 id="wd-checkboxes">Checkboxes</h5>
-        <label htmlFor="wd-chkbox-comedy">Favorite movie genre:</label>
+        <label>Favorite movie genre:</label>
         <br />
         <input type="checkbox" name="check-genre" id="wd-chkbox-comedy" />
         <label htmlFor="wd-chkbox-comedy">Comedy</label>
