@@ -1,23 +1,37 @@
 "use client";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import CourseNavigation from "./Navigation";
 import { useSelector } from "react-redux";
 import { useParams, useRouter } from "next/navigation";
 import { FaAlignJustify } from "react-icons/fa6";
+import * as courseClient from "../client";
 
 export default function CoursesLayout({ children }: { children: ReactNode }) {
   const { cid } = useParams();
   const router = useRouter();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { courses } = useSelector((state: any) => state.coursesReducer);
+  const [course, setCourse] = useState<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { enrollments } = useSelector(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (state: any) => state.enrollmentsReducer
   );
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const course = courses.find((course: any) => course._id === cid);
+
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const courses = await courseClient.fetchAllCourses();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const foundCourse = courses.find((c: any) => c._id === cid);
+        setCourse(foundCourse);
+      } catch (error) {
+        console.error("Error fetching course:", error);
+      }
+    };
+
+    fetchCourse();
+  }, [cid]);
 
   useEffect(() => {
     if (!currentUser) {

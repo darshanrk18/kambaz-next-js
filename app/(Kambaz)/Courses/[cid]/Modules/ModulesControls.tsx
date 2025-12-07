@@ -15,68 +15,57 @@ export default function ModulesControls({
   moduleName,
   setModuleName,
   addModule,
+  collapseAll,
 }: {
   moduleName: string;
   setModuleName: (title: string) => void;
   addModule: () => void;
+  collapseAll: () => void;
 }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   return (
-    <div id="wd-modules-controls" className="text-nowrap">
-      <Button
-        variant="danger"
-        size="lg"
-        className="me-1 float-end"
-        id="wd-add-module-btn"
-        onClick={handleShow}
-      >
-        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-        Module
+    <div className="d-flex justify-content-end mb-3 gap-2">
+      <Button variant="secondary" onClick={collapseAll}>
+        Collapse All
       </Button>
-      <ModuleEditor show={show} handleClose={handleClose} dialogTitle="Add Module"
-       moduleName={moduleName} setModuleName={setModuleName} addModule={addModule} />
-      <Dropdown className="float-end me-2">
-        <DropdownToggle variant="secondary" size="lg" id="wd-publish-all-btn">
+      <Button variant="secondary">View Progress</Button>
+      <Dropdown>
+        <DropdownToggle variant="secondary">
           <GreenCheckmark /> Publish All
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem id="wd-publish-all">
+          <DropdownItem>
             <GreenCheckmark /> Publish All
           </DropdownItem>
-          <DropdownItem id="wd-publish-all-modules-and-items">
+          <DropdownItem>
             <GreenCheckmark /> Publish all modules and items
           </DropdownItem>
-          <DropdownItem id="wd-publish-modules-only">
+          <DropdownItem>
             <GreenCheckmark /> Publish modules only
           </DropdownItem>
-          <DropdownItem id="wd-unpublish-all-modules-and-items">
+          <DropdownItem>
             <MdDoNotDisturbAlt /> Unpublish all modules and items
           </DropdownItem>
-          <DropdownItem id="wd-unpublish-modules-only">
+          <DropdownItem>
             <MdDoNotDisturbAlt /> Unpublish modules only
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
-      <Button
-        variant="secondary"
-        size="lg"
-        className="me-1 float-end"
-        id="wd-view-progress"
-      >
-        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-        View Progress
+      <Button variant="danger" onClick={handleShow}>
+        <FaPlus className="me-2" style={{ position: "relative", bottom: "1px" }} />
+        Module
       </Button>
-      <Button
-        variant="secondary"
-        size="lg"
-        className="me-1 float-end"
-        id="wd-collapse-all"
-      >
-        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-        Collapse All
-      </Button>
+      <ModuleEditor
+        show={show}
+        handleClose={handleClose}
+        dialogTitle="Add Module"
+        moduleName={moduleName}
+        setModuleName={setModuleName}
+        addModule={addModule}
+      />
     </div>
   );
 }
