@@ -1,7 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
-import { useSelector } from "react-redux";
 import * as client from "../../client";
 import PeopleTable from "./Table";
 
@@ -9,10 +8,8 @@ export default function People() {
   const { cid } = useParams();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [users, setUsers] = useState<any[]>([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       const users = await client.findUsersForCourse(cid as string);
       setUsers(users || []);
@@ -20,11 +17,11 @@ export default function People() {
       console.error("Error fetching users:", error);
       setUsers([]);
     }
-  };
+  }, [cid]);
 
   useEffect(() => {
     fetchUsers();
-  }, [cid]);
+  }, [fetchUsers]);
 
   return (
     <div>

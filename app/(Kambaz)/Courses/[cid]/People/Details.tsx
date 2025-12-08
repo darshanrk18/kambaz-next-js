@@ -77,20 +77,21 @@ export default function PeopleDetails({
         setRole(user.role || "");
       } else {
         // User not found, close details
-        onClose();
+        onClose?.();
       }
     } catch (error) {
       console.error("Error fetching user:", error);
       // If user not found (404) or was deleted, close the details
       const errorObj = error as { response?: { status?: number }; message?: string };
       if (errorObj?.response?.status === 404 || errorObj?.message?.includes("not found")) {
-        onClose();
+        onClose?.();
       } else {
         // For other errors, show a message but don't close
         console.error("Unexpected error fetching user:", error);
       }
     }
-  }, [uid, onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uid]);
 
   const deleteUser = async (uid: string) => {
     try {
@@ -118,7 +119,8 @@ export default function PeopleDetails({
       setEmail("");
       setRole("");
     }
-  }, [uid, fetchUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uid]);
 
   if (!uid) return null;
 
