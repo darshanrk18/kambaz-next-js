@@ -15,7 +15,16 @@ export default function Profile() {
 
   useEffect(() => {
     if (currentUser) {
-      setProfile(currentUser);
+      // Format dob for date input (YYYY-MM-DD)
+      const formattedProfile = { ...currentUser };
+      if (formattedProfile.dob) {
+        // If dob is a Date object or ISO string, convert to YYYY-MM-DD
+        const dobDate = new Date(formattedProfile.dob);
+        if (!Number.isNaN(dobDate.getTime())) {
+          formattedProfile.dob = dobDate.toISOString().split('T')[0];
+        }
+      }
+      setProfile(formattedProfile);
     }
   }, [currentUser]);
 
