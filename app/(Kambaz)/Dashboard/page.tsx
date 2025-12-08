@@ -11,9 +11,9 @@ export default function Dashboard() {
   const [courses, setCourses] = useState<any[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [allCourses, setAllCourses] = useState<any[]>([]);
-  const [showAddCourse, setShowAddCourse] = useState(false);
   const [showEnrolledOnly, setShowEnrolledOnly] = useState(true); // ← NEW STATE
-  const [course, setCourse] = useState({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [course, setCourse] = useState<any>({
     name: "New Course",
     number: "New Number",
     startDate: "2023-09-10",
@@ -44,7 +44,14 @@ export default function Dashboard() {
     try {
       const newCourse = await userClient.createCourse(course);
       setCourses([...courses, newCourse]);
-      setShowAddCourse(false);
+      // Reset course form
+      setCourse({
+        name: "New Course",
+        number: "New Number",
+        startDate: "2023-09-10",
+        endDate: "2023-12-15",
+        description: "New Description",
+      });
     } catch (error) {
       console.error("Error adding course:", error);
     }
@@ -53,6 +60,7 @@ export default function Dashboard() {
   // Update course (Faculty only)
   const updateCourse = async () => {
     try {
+      if (!course._id) return; // Can't update without _id
       await courseClient.updateCourse(course);
       setCourses(courses.map((c) => (c._id === course._id ? course : c)));
     } catch (error) {
@@ -150,7 +158,7 @@ export default function Dashboard() {
           className="btn btn-primary float-end"
           onClick={() => setShowEnrolledOnly(!showEnrolledOnly)}
         >
-          {showEnrolledOnly ? "All Courses" : "Enrollments"}
+          {showEnrolledOnly ? "All Courses" : "My Courses"}
         </button>
       </h2>
       <hr />
@@ -211,7 +219,8 @@ export default function Dashboard() {
                     )}
 
                     {/* Student Controls - Show Enroll/Unenroll based on enrollment status */}
-                    {!isFaculty && (
+                    {/* Only show Enroll/Unenroll buttons when viewing "All Courses", not "My Courses" */}
+                    {!isFaculty && !showEnrolledOnly && (
                       <>
                         {enrolled ? (
                           <button
