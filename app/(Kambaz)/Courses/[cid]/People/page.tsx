@@ -13,8 +13,13 @@ export default function People() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const fetchUsers = async () => {
-    const users = await client.findUsersForCourse(cid as string);
-    setUsers(users);
+    try {
+      const users = await client.findUsersForCourse(cid as string);
+      setUsers(users || []);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      setUsers([]);
+    }
   };
 
   useEffect(() => {

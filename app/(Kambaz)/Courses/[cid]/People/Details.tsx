@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { FaCheck, FaUserCircle } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
-import { useParams } from "next/navigation";
-import Link from "next/link";
 import * as client from "../../../Account/client";
 import { FaPencil } from "react-icons/fa6";
 import { FormControl } from "react-bootstrap";
@@ -23,26 +21,41 @@ export default function PeopleDetails({
   const [roleEditing, setRoleEditing] = useState(false);
 
   const saveUser = async () => {
-    const [firstName, lastName] = name.split(" ");
-    const updatedUser = { ...user, firstName, lastName };
-    await client.updateUser(updatedUser);
-    setUser(updatedUser);
-    setEditing(false);
-    onClose();
+    try {
+      const [firstName, lastName] = name.split(" ");
+      const updatedUser = { ...user, firstName, lastName };
+      await client.updateUser(updatedUser);
+      setUser(updatedUser);
+      setEditing(false);
+      onClose();
+    } catch (error) {
+      console.error("Error updating user:", error);
+      alert("Failed to update user. Please try again.");
+    }
   };
 
   const saveEmail = async () => {
-    const updatedUser = { ...user, email };
-    await client.updateUser(updatedUser);
-    setUser(updatedUser);
-    setEmailEditing(false);
+    try {
+      const updatedUser = { ...user, email };
+      await client.updateUser(updatedUser);
+      setUser(updatedUser);
+      setEmailEditing(false);
+    } catch (error) {
+      console.error("Error updating email:", error);
+      alert("Failed to update email. Please try again.");
+    }
   };
 
   const saveRole = async () => {
-    const updatedUser = { ...user, role };
-    await client.updateUser(updatedUser);
-    setUser(updatedUser);
-    setRoleEditing(false);
+    try {
+      const updatedUser = { ...user, role };
+      await client.updateUser(updatedUser);
+      setUser(updatedUser);
+      setRoleEditing(false);
+    } catch (error) {
+      console.error("Error updating role:", error);
+      alert("Failed to update role. Please try again.");
+    }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -53,23 +66,59 @@ export default function PeopleDetails({
   // Check if current user can edit/delete (FACULTY or ADMIN only)
   const canEdit = currentUser && (currentUser.role === "FACULTY" || currentUser.role === "ADMIN");
 
-  const fetchUser = async () => {
+  const fetchUser = useCallback(async () => {
     if (!uid) return;
-    const user = await client.findUserById(uid);
-    setUser(user);
-    setName(`${user.firstName} ${user.lastName}`);
-    setEmail(user.email || "");
-    setRole(user.role || "");
-  };
+    try {
+      const user = await client.findUserById(uid);
+      if (user) {
+        setUser(user);
+        setName(`${user.firstName || ""} ${user.lastName || ""}`.trim());
+        setEmail(user.email || "");
+        setRole(user.role || "");
+      } else {
+        // User not found, close details
+        onClose();
+      }
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      // If user not found (404) or was deleted, close the details
+      const errorObj = error as { response?: { status?: number }; message?: string };
+      if (errorObj?.response?.status === 404 || errorObj?.message?.includes("not found")) {
+        onClose();
+      } else {
+        // For other errors, show a message but don't close
+        console.error("Unexpected error fetching user:", error);
+      }
+    }
+  }, [uid, onClose]);
 
   const deleteUser = async (uid: string) => {
-    await client.deleteUser(uid);
-    onClose();
+    try {
+      await client.deleteUser(uid);
+      // Clear user state before closing to prevent any rendering issues
+      setUser({});
+      setName("");
+      setEmail("");
+      setRole("");
+      // Close the details panel
+      onClose();
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      alert("Failed to delete user. Please try again.");
+    }
   };
 
   useEffect(() => {
-    if (uid) fetchUser();
-  }, [uid]);
+    if (uid) {
+      fetchUser();
+    } else {
+      // Reset state when uid becomes null
+      setUser({});
+      setName("");
+      setEmail("");
+      setRole("");
+    }
+  }, [uid, fetchUser]);
 
   if (!uid) return null;
 
@@ -109,7 +158,7 @@ export default function PeopleDetails({
         {!editing && canEdit && (
           <FaPencil
             onClick={() => {
-              setName(`${user.firstName} ${user.lastName}`);
+              setName(`${user.firstName || ""} ${user.lastName || ""}`.trim());
               setEditing(true);
             }}
             className="float-end fs-5 mt-2 wd-edit"
@@ -123,10 +172,10 @@ export default function PeopleDetails({
         )}
         {!editing && (
           <div className="wd-name" onClick={canEdit ? () => {
-            setName(`${user.firstName} ${user.lastName}`);
+            setName(`${user.firstName || ""} ${user.lastName || ""}`.trim());
             setEditing(true);
           } : undefined} style={canEdit ? { cursor: 'pointer' } : { cursor: 'default' }}>
-            {user.firstName} {user.lastName}
+            {user.firstName || ""} {user.lastName || ""}
           </div>
         )}
         {user && editing && (

@@ -15,8 +15,14 @@ export default function Assignments() {
   const [assignments, setAssignments] = useState<any[]>([]);
 
   const fetchAssignments = async () => {
-    const assignments = await client.findAssignmentsForCourse(cid as string);
-    setAssignments(assignments);
+    try {
+      const assignments = await client.findAssignmentsForCourse(cid as string);
+      console.log(`Fetched ${assignments.length} assignments for course ${cid}`, assignments);
+      setAssignments(assignments);
+    } catch (error) {
+      console.error("Error fetching assignments:", error);
+      setAssignments([]);
+    }
   };
 
   useEffect(() => {

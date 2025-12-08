@@ -1,10 +1,8 @@
 "use client";
 
-import React from "react";
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "./Details";
-import Link from "next/link";
 import { useState } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,15 +17,21 @@ export default function PeopleTable({
   const [showDetails, setShowDetails] = useState(false);
   const [showUserId, setShowUserId] = useState<string | null>(null);
 
+  const handleClose = () => {
+    setShowDetails(false);
+    setShowUserId(null);
+    // Fetch users after a short delay to ensure delete operation completes
+    setTimeout(() => {
+      fetchUsers();
+    }, 100);
+  };
+
   return (
     <div id="wd-people-table">
       {showDetails && (
         <PeopleDetails
           uid={showUserId}
-          onClose={() => {
-            setShowDetails(false);
-            fetchUsers();
-          }}
+          onClose={handleClose}
         />
       )}
       <Table striped>
