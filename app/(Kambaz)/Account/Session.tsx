@@ -11,10 +11,17 @@ export default function Session({ children }: { children: React.ReactNode }) {
   const fetchProfile = async () => {
     try {
       const currentUser = await client.profile();
-      dispatch(setCurrentUser(currentUser));
+      if (currentUser) {
+        dispatch(setCurrentUser(currentUser));
+      } else {
+        dispatch(setCurrentUser(null));
+      }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      if (err.response?.status !== 401) {
+      // If 401 (unauthorized), clear the current user
+      if (err.response?.status === 401) {
+        dispatch(setCurrentUser(null));
+      } else {
         console.error("Error fetching profile:", err);
       }
     } finally {
