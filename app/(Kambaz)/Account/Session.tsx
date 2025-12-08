@@ -12,7 +12,7 @@ export default function Session({ children }: { children: React.ReactNode }) {
     try {
       const currentUser = await client.profile();
       if (currentUser) {
-        dispatch(setCurrentUser(currentUser));
+      dispatch(setCurrentUser(currentUser));
       } else {
         dispatch(setCurrentUser(null));
       }

@@ -22,12 +22,12 @@ export default function PeopleDetails({
 
   const saveUser = async () => {
     try {
-      const [firstName, lastName] = name.split(" ");
-      const updatedUser = { ...user, firstName, lastName };
-      await client.updateUser(updatedUser);
-      setUser(updatedUser);
-      setEditing(false);
-      onClose();
+    const [firstName, lastName] = name.split(" ");
+    const updatedUser = { ...user, firstName, lastName };
+    await client.updateUser(updatedUser);
+    setUser(updatedUser);
+    setEditing(false);
+    onClose();
     } catch (error) {
       console.error("Error updating user:", error);
       alert("Failed to update user. Please try again.");
@@ -36,10 +36,10 @@ export default function PeopleDetails({
 
   const saveEmail = async () => {
     try {
-      const updatedUser = { ...user, email };
-      await client.updateUser(updatedUser);
-      setUser(updatedUser);
-      setEmailEditing(false);
+    const updatedUser = { ...user, email };
+    await client.updateUser(updatedUser);
+    setUser(updatedUser);
+    setEmailEditing(false);
     } catch (error) {
       console.error("Error updating email:", error);
       alert("Failed to update email. Please try again.");
@@ -48,10 +48,10 @@ export default function PeopleDetails({
 
   const saveRole = async () => {
     try {
-      const updatedUser = { ...user, role };
-      await client.updateUser(updatedUser);
-      setUser(updatedUser);
-      setRoleEditing(false);
+    const updatedUser = { ...user, role };
+    await client.updateUser(updatedUser);
+    setUser(updatedUser);
+    setRoleEditing(false);
     } catch (error) {
       console.error("Error updating role:", error);
       alert("Failed to update role. Please try again.");
@@ -69,12 +69,12 @@ export default function PeopleDetails({
   const fetchUser = useCallback(async () => {
     if (!uid) return;
     try {
-      const user = await client.findUserById(uid);
+    const user = await client.findUserById(uid);
       if (user) {
-        setUser(user);
+    setUser(user);
         setName(`${user.firstName || ""} ${user.lastName || ""}`.trim());
-        setEmail(user.email || "");
-        setRole(user.role || "");
+    setEmail(user.email || "");
+    setRole(user.role || "");
       } else {
         // User not found, close details
         onClose?.();
@@ -95,14 +95,14 @@ export default function PeopleDetails({
 
   const deleteUser = async (uid: string) => {
     try {
-      await client.deleteUser(uid);
+    await client.deleteUser(uid);
       // Clear user state before closing to prevent any rendering issues
       setUser({});
       setName("");
       setEmail("");
       setRole("");
       // Close the details panel
-      onClose();
+    onClose();
     } catch (error) {
       console.error("Error deleting user:", error);
       alert("Failed to delete user. Please try again.");

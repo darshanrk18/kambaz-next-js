@@ -11,7 +11,7 @@ export default function People() {
 
   const fetchUsers = useCallback(async () => {
     try {
-      const users = await client.findUsersForCourse(cid as string);
+    const users = await client.findUsersForCourse(cid as string);
       setUsers(users || []);
     } catch (error) {
       console.error("Error fetching users:", error);

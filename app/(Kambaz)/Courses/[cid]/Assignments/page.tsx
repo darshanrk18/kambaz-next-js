@@ -16,9 +16,9 @@ export default function Assignments() {
 
   const fetchAssignments = async () => {
     try {
-      const assignments = await client.findAssignmentsForCourse(cid as string);
+    const assignments = await client.findAssignmentsForCourse(cid as string);
       console.log(`Fetched ${assignments.length} assignments for course ${cid}`, assignments);
-      setAssignments(assignments);
+    setAssignments(assignments);
     } catch (error) {
       console.error("Error fetching assignments:", error);
       setAssignments([]);
